@@ -17,7 +17,6 @@ function Cell(props) {
                 }
             }}
             style={{backgroundColor: color}}>
-            
         </div>
     );
 }
