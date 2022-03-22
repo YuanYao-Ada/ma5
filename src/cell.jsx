@@ -1,8 +1,9 @@
 import './cell.css';
 import { useState } from "react";
+import { useStore } from 'react-redux'
 
-function Cell(props) {
-    let store = props.store;
+function Cell() {
+    let store = useStore();
     const [color, setColor] = useState("white");
 
     function handleOnClick(color) {
