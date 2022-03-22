@@ -14,5 +14,14 @@ element of the HTML document (this is actually using the DOM API to find this el
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Cells from './cells.jsx';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import combineReducers from './reducer.jsx';
 
-ReactDOM.render(<Cells />, document.getElementById('root'));
+const store = createStore(combineReducers);
+
+ReactDOM.render(
+    <Provider store={store}>
+        <Cells />
+    </Provider>, 
+    document.getElementById('root'));

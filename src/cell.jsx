@@ -2,20 +2,23 @@ import './cell.css';
 import { useState } from "react";
 
 function Cell(props) {
+    let store = props.store;
     const [color, setColor] = useState("white");
+
+    function handleOnClick(color) {
+        if (color === "white") {
+            store.dispatch({type: 'INCREASE'});
+            setColor("black");
+        } else {
+            store.dispatch({type: "DECREASE"});
+            setColor("white");
+        }
+    }
 
     return (
         <div 
             className="Cell"
-            onClick={() => {
-               if (color === "white") {
-                    setColor("black");
-                    props.callBack(props.value + 1);
-                } else {
-                    setColor("white");
-                    props.callBack(props.value - 1);
-                }
-            }}
+            onClick={() => handleOnClick(color)}
             style={{backgroundColor: color}}>
         </div>
     );

@@ -1,18 +1,21 @@
 import './cells.css';
-import { useState } from "react";
 import Cell from './cell.jsx';
+import { shallowEqual, useSelector } from 'react-redux';
+import { useStore } from 'react-redux'
 
-function Cells() {
-    const [value, setValue] = useState(0);
-
+function Cells(props) {
+    const store = useStore();
+    const currentCount = useSelector((state) => {
+        return state.count;
+    }, shallowEqual);
     return (
         <div>
-            <div>Count: {value}</div>
+            <div>Count: {currentCount}</div>
             <div className='Cells'>
-                <Cell value={value} callBack={setValue} />
-                <Cell value={value} callBack={setValue} />
-                <Cell value={value} callBack={setValue} />
-                <Cell value={value} callBack={setValue} />
+                <Cell store={store}/>
+                <Cell store={store}/>
+                <Cell store={store}/>
+                <Cell store={store}/>
             </div>   
         </div>     
     )
